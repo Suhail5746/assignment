@@ -1,18 +1,21 @@
 $(document).ready(function () {
     let scrollAmount = 0;
     const itemWidth = $('.kitchen-item').outerWidth(true);
-    
+    const carouselContainer = $(".carousel-container");
+    const carouselWidth = $(".carousel").width();
+    const maxScroll = carouselContainer[0].scrollWidth - carouselWidth;
+
     $(".next-btn").click(function () {
-        if (scrollAmount < ($(".carousel-container")[0].scrollWidth - $(".carousel").width())) {
+        if (scrollAmount < maxScroll) {
             scrollAmount += itemWidth;
-            $(".carousel-container").css("transform", `translateX(-${scrollAmount}px)`);
+            carouselContainer.animate({ scrollLeft: scrollAmount }, 400);
         }
     });
 
     $(".prev-btn").click(function () {
         if (scrollAmount > 0) {
             scrollAmount -= itemWidth;
-            $(".carousel-container").css("transform", `translateX(-${scrollAmount}px)`);
+            carouselContainer.animate({ scrollLeft: scrollAmount }, 400);
         }
     });
 });

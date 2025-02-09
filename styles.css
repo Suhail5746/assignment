@@ -122,23 +122,39 @@ p {
 
 .search-bar {
   display: flex;
-  margin-top: 20px;
+  align-items: center; /* Ensures vertical alignment */
+  width: fit-content; /* Prevents unnecessary stretching */
+}
+
+.search-bar input,
+.search-bar button {
+  height: 42px; /* Set exact same height */
+  font-size: 1rem;
+  border: none;
+  display: flex;
+  align-items: center; /* Ensures content is centered */
 }
 
 .search-bar input {
   width: 250px;
-  padding: 10px;
-  border: none;
+  padding: 0 12px; /* Remove top/bottom padding */
   border-radius: 5px 0 0 5px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .search-bar button {
   background-color: #fbbc04;
-  border: none;
-  padding: 10px 20px;
+  padding: 0 20px;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18.5px;
 }
+
 
 .image-content img {
   width: 400px; /* Adjust the size as needed */
@@ -240,29 +256,66 @@ p {
   border-radius: 4px;
 }
 
-
-
-
-.title {
-  font-size: 2rem;
+#title-carosel {
+  font-size: 30px;
   margin-bottom: 20px;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: relative; /* Add this to make buttons position correctly */
   width: 80%;
   margin: auto;
   overflow: hidden;
+  padding: 20px 50px; /* Add padding so buttons don't get hidden */
 }
 
 .carousel-container {
   display: flex;
   gap: 15px;
   transition: transform 0.5s ease-in-out;
+  width: max-content;
 }
+
+.kitchen-item {
+  min-width: 250px;
+  flex-shrink: 0;
+}
+
+.prev-btn, .next-btn {
+  background-color: #00b300;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; /* Ensures buttons are above other elements */
+  opacity: 1; /* Make sure they are visible */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.prev-btn { left: 10px; }  /* Moved inside visible area */
+.next-btn { right: 10px; } /* Moved inside visible area */
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #008000;
+}
+
+
+
+
+
+
+
+
 
 .kitchen-item {
   width: 250px;
@@ -341,25 +394,7 @@ p {
   background: #e0a800;
 }
 
-.prev-btn, .next-btn {
-  background-color: #00b300;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 2rem;
-  padding: 10px;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-.prev-btn { left: -50px; }
-.next-btn { right: -50px; }
-
-.prev-btn:hover, .next-btn:hover {
-  background-color: #008000;
-}
 
 #requestDishBtn{
   margin-top: 50px;
